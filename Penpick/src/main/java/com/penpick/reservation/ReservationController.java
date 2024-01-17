@@ -1,6 +1,7 @@
 package com.penpick.reservation;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +19,7 @@ public class ReservationController {
 	
 	@GetMapping
 	public String reservationList() {
-		return "/reservation/list";
+		return "redirect:/reservation/list";
 	}
 
 	@GetMapping("/list")
@@ -33,8 +34,8 @@ public class ReservationController {
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Reservation> getReservation(@PathVariable Integer id) {
-		Reservation reservation = reservationService.getReservation(id);
+	public ResponseEntity<Optional<Reservation>> getReservation(@PathVariable Long id) {
+		Optional<Reservation> reservation = reservationService.getReservation(id);
 		/*
 		if (reservation == null) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND)

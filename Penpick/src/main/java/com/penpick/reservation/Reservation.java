@@ -22,7 +22,7 @@ public class Reservation {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="reservation_seq")
 	@SequenceGenerator(name="reservation_seq", sequenceName="reservation_seq", allocationSize=1)
-	private int resNum;
+	private long resNum;
 	private int id;
 	private int userNum;
 	private int unuserNum;
