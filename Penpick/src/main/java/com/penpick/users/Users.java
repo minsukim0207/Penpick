@@ -1,17 +1,17 @@
 package com.penpick.users;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
+import com.penpick.qna.question.Question;
+import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 @Getter
-@Setter
+@NoArgsConstructor
 @Entity
 public class Users {
 
@@ -35,4 +35,19 @@ public class Users {
 	private String userGender;
 
 	private String point;
+
+	@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	public List<Question> questions = new ArrayList<>();
+
+	@Builder
+	public Users(String userEmail, String userPw, String userNickname, String userBirth, String userPhone, Date userDate, String userGender, String point) {
+		this.userEmail = userEmail;
+		this.userPw = userPw;
+		this.userNickname = userNickname;
+		this.userBirth = userBirth;
+		this.userPhone = userPhone;
+		this.userDate = userDate;
+		this.userGender = userGender;
+		this.point = point;
+	}
 }
