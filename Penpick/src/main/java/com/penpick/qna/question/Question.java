@@ -18,8 +18,8 @@ import java.util.Optional;
 public class Question extends BaseTime {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="board_seq")
-    @SequenceGenerator(name="board_seq", sequenceName="board_seq", allocationSize=1)
+    @GeneratedValue(strategy= GenerationType.SEQUENCE/*, generator="board_seq"*/)
+    //@SequenceGenerator(name="board_seq", sequenceName="board_seq", allocationSize=1)
     private Long questionNum;
 
     @Column(nullable = false)
@@ -30,7 +30,7 @@ public class Question extends BaseTime {
     private int viewCount;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "USER_NUM")
+    @JoinColumn
     public Users user;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

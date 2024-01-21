@@ -2,10 +2,12 @@ package com.penpick.qna.answer;
 
 import com.penpick.qna.common.BaseTime;
 import com.penpick.qna.question.Question;
+import com.penpick.users.Users;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
 
 @Getter
 @NoArgsConstructor
@@ -13,11 +15,15 @@ import lombok.NoArgsConstructor;
 public class Answer extends BaseTime {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="comment_seq")
-    @SequenceGenerator(name="comment_seq", sequenceName="comment_seq", allocationSize=1)
+    @GeneratedValue(strategy= GenerationType.SEQUENCE/*, generator="comment_seq"*/)
+    //@SequenceGenerator(name="comment_seq", sequenceName="comment_seq", allocationSize=1)
     private Long answerNum;
 
     private String content;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_NUM")
+    public Users user;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "QUESTION_NUM")
