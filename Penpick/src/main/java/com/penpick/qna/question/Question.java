@@ -1,7 +1,7 @@
 package com.penpick.qna.question;
 
 import com.penpick.qna.answer.Answer;
-import com.penpick.qna.common.BaseTime;
+import com.penpick.qna.common.DateEntity;
 import com.penpick.users.Users;
 import jakarta.persistence.*;
 import lombok.Builder;
@@ -10,12 +10,11 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Getter
 @NoArgsConstructor
 @Entity
-public class Question extends BaseTime {
+public class Question extends DateEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.SEQUENCE/*, generator="board_seq"*/)

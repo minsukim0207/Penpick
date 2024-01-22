@@ -1,18 +1,17 @@
 package com.penpick.qna.answer;
 
-import com.penpick.qna.common.BaseTime;
+import com.penpick.qna.common.DateEntity;
 import com.penpick.qna.question.Question;
 import com.penpick.users.Users;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Fetch;
 
 @Getter
 @NoArgsConstructor
 @Entity
-public class Answer extends BaseTime {
+public class Answer extends DateEntity {
 
     @Id
     @GeneratedValue(strategy= GenerationType.SEQUENCE/*, generator="comment_seq"*/)

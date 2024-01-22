@@ -12,7 +12,7 @@ import java.time.format.DateTimeFormatter;
 @Getter
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-public class BaseTime {
+public class DateEntity {
 
     @CreatedDate
     @Column
